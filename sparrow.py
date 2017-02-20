@@ -65,57 +65,52 @@ def main():
       if (weigand_counter -1 )== 0:
         flagDone = 1
    
-  # if we have bits and we the weigand counter went out
-  if bitCount > 0 and flagDone: 
-    i = ''
+    # if we have bits and we the weigand counter went out
+    if bitCount > 0 and flagDone: 
+      i = ''
  
-    print "Read "
-    print bitCount
-    print " bits. "
+      print "Read "
+      print bitCount
+      print " bits. "
  
-    if bitCount == 35:
-      # 35 bit HID Corporate 1000 format
-      # facility code = bits 2 to 14
-      for i in range(2,15): 
-  	 facilityCode <<=1
-         facilityCode |= databits[i]
+      if bitCount == 35:
+        # 35 bit HID Corporate 1000 format
+        # facility code = bits 2 to 14
+        for i in range(2,15): 
+  	   facilityCode <<=1
+           facilityCode |= databits[i]
       
- 
-      # card code = bits 15 to 34
-      for i in range(14,35):
-         cardCode <<=1
-         cardCode |= databits[i]
+        # card code = bits 15 to 34
+        for i in range(14,35):
+           cardCode <<=1
+           cardCode |= databits[i]
       
-      printBits(facilityCode,cardCode)
+        printBits(facilityCode,cardCode)
     
-    elif bitCount == 26:
-      # standard 26 bit format
-      # facility code = bits 2 to 9
-      for i in range(1,10):
-         facilityCode <<=1
-         facilityCode |= databits[i]
+      elif bitCount == 26:
+        # standard 26 bit format
+        # facility code = bits 2 to 9
+        for i in range(1,10):
+           facilityCode <<=1
+           facilityCode |= databits[i]
       
- 
-      # card code = bits 10 to 23
-      for i in range(9,26):
-         cardCode <<=1
-         cardCode |= databits[i]
+        # card code = bits 10 to 23
+        for i in range(9,26):
+           cardCode <<=1
+           cardCode |= databits[i]
       
- 
-      printBits(facilityCode,cardCode)  
+        printBits(facilityCode,cardCode)  
     
-    else: 
-     # you can add other formats if you want!
-      print "\n","Unable to decode." 
+      else: 
+       # you can add other formats if you want!
+        print "\n","Unable to decode." 
     
- 
-     # cleanup and get ready for the next card
-      bitCount = 0
-      facilityCode = 0
-      cardCode = 0
-      for i in range(0,MAX_BITS+1): 
-        databits[i] = 0
- 
+       # cleanup and get ready for the next card
+        bitCount = 0
+        facilityCode = 0
+        cardCode = 0
+        for i in range(0,MAX_BITS+1): 
+          databits[i] = 0
 
 if __name__=="__main__":
     main()
