@@ -13,10 +13,14 @@ def INT0():
 
 
 def INT1():
+  global databits
+  global bitCount
   databits[bitCount] = 1
-  global bitCount +=1
-  global flagDone = 0
-  global weigand_counter = WEIGAND_WAIT_TIME  
+  bitCount += 1
+  global flagDone 
+  flagDone = 0
+  global weigand_counter
+  weigand_counter = WEIGAND_WAIT_TIME  
 
 
 # main function
