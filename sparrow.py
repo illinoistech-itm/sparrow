@@ -58,12 +58,12 @@ def main():
 #  GPIO.cleanup()
 #GPIO.cleanup()
 
-while True:
-  print "Waiting for scan to happen"
+  while True:
+    print "Waiting for scan to happen"
   # This waits to make sure that there have been no more data pulses before processing data
-  if not flagDone:
-    if (weigand_counter -1 )== 0:
-      flagDone = 1
+    if not flagDone:
+      if (weigand_counter -1 )== 0:
+        flagDone = 1
    
   # if we have bits and we the weigand counter went out
   if bitCount > 0 and flagDone: 
