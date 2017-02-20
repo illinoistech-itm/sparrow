@@ -27,8 +27,8 @@ def INT1():
 def main():
   GPIO.setmode(GPIO.BCM)
   
-  GPIO.setup(38,GPIO.IN)
-  GPIO.setup(40,GPIO.IN)
+  GPIO.setup(38,GPIO.IN, pull_up_down=GPIO.PUD_UP)
+  GPIO.setup(40,GPIO.IN, pull_up_down=GPIO.PUD_UP)
   
 
   MAX_BITS=100                #  max number of bits 
