@@ -62,9 +62,9 @@ def main():
   while True:
     print "Waiting for scan to happen"
   # This waits to make sure that there have been no more data pulses before processing data
-    GPIO(16,True)
+    GPIO.output(16,True)
     sleep(1)
-    GPIO(16,False)
+    GPIO.output(16,False)
     sleep(1) 
     if not flagDone:
       if (weigand_counter -1 )== 0:
