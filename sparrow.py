@@ -1,6 +1,7 @@
 #!/usr/bin/python2.7
 
 import RPi.GPIO as GPIO
+import time
 GPIO.setmode(GPIO.BCM)
 
 def printBits(facilityCode,cardCode):
@@ -36,7 +37,7 @@ def main():
   
   GPIO.setup(20,GPIO.IN, pull_up_down=GPIO.PUD_UP)
   GPIO.setup(21,GPIO.IN, pull_up_down=GPIO.PUD_UP)
-  
+  GPIO.setup(16,GPIO.OUT) 
 
   MAX_BITS=100                #  max number of bits 
   WEIGAND_WAIT_TIME=3000      # time to wait for another weigand pulse.  
@@ -61,6 +62,10 @@ def main():
   while True:
     print "Waiting for scan to happen"
   # This waits to make sure that there have been no more data pulses before processing data
+    GPIO(16,True)
+    sleep(1)
+    GPIO(16,False)
+    sleep(1) 
     if not flagDone:
       if (weigand_counter -1 )== 0:
         flagDone = 1
